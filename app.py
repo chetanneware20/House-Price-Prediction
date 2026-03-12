@@ -4,9 +4,17 @@ import pickle
 import os
 from sklearn.linear_model import LinearRegression
 
+
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_FILE = os.path.join(BASE_DIR, "data", "housing.csv")
+
+df = pd.read_csv(DATA_FILE)
+
 # Check if model exists
 if not os.path.exists("model.pkl"):
-    df = pd.read_csv("data/housing.csv")
+    df = pd.read_csv("housing.csv")
 
     X = df[["area","bedrooms","bathrooms","stories","parking"]]
     y = df["price"]
